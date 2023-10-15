@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#AA0002",
     flexDirection: "row",
     justifyContent: "space-between",
-    padding: 15,
+    padding: 20,
   },
   iconsView: {
     flexDirection: "row",
