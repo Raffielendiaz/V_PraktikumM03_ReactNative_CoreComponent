@@ -36,11 +36,11 @@ const Header = (props) => {
 
 // Styles
 const styles = StyleSheet.create({
-    header: {
+  header: {
     backgroundColor: "#AA0002",
     flexDirection: "row",
     justifyContent: "space-between",
-    padding: 20,
+    padding: 15,
   },
   iconsView: {
     flexDirection: "row",
