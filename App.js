@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
-import { View, DrawerLayoutAndroid, StatusBar, SafeAreaView } from "react-native";
+import { View, DrawerLayoutAndroid, StatusBar } from "react-native";
 import Header from "./components/header";
-import Button from "./components/button";
+import GButton from "./components/button";
 import Separator from "./components/separator";
 import List from "./screens/list";
 import Article from "./screens/article";
@@ -15,25 +15,26 @@ const App = () => {
 
   // Arrow Function inside Functional Component
   const changePage = (drawer, pageName) => {
-    console.log(`Change page to ${pageName}`);
+    // Close Drawer
+    drawer.current.closeDrawer();
+    // Change state value
 
     setPage(pageName);
   };
 
   // Arrow Function inside Functional Component
   const navigationView = () => (
-    <View style={{ padding: 50, backgroundColor: "#222222", flex: 1 }}>
-      <Button text="List" onPress={() => changePage(drawer, "list")} />
+    <View style={{ padding: 30, backgroundColor: "#222222", flex: 1 }}>
+      <GButton text="List" onPress={() => changePage(drawer, "list")} />
       <Separator height={30} />
-      <Button text="Article" onPress={() => changePage(drawer, "article")} />
+      <GButton text="Article" onPress={() => changePage(drawer, "article")} />
       <Separator height={30} />
-      <Button text="Close" onPress={() => drawer.current.closeDrawer()} />
+      <GButton text="Close" onPress={() => drawer.current.closeDrawer()} />
     </View>
   );
 
   return (
-    <SafeAreaView>
-      <DrawerLayoutAndroid
+    <DrawerLayoutAndroid
       ref={drawer}
       drawerWidth={300}
       drawerPosition="left"
@@ -43,13 +44,8 @@ const App = () => {
       <View>
         <Header drawer={drawer} />
         {page == "list" ? <List /> : page == "article" ? <Article /> : null}
-        <Button text="Article" onPress={() => changePage(drawer, "article")} />
-        <Button text="List" onPress={() => changePage(drawer, "list")} />
-
-
-      </View>
+      </View>      
     </DrawerLayoutAndroid>
-    </SafeAreaView>
   );
 };
 
